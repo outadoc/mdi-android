@@ -18,7 +18,7 @@ import java.nio.file.Paths
 
 object Version {
 
-    private const val REVISION = 'a'
+    private const val REVISION = 'b'
 
     private val npmPackageVersion: String by lazy {
         ProcessBuilder()
