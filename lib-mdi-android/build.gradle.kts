@@ -114,6 +114,10 @@ tasks.register("mdiRetrieveFont") {
     dependsOn("mdiGenerateFontMap")
 }
 
-val assemble by tasks.getting {
-    dependsOn("mdiRetrieveFont")
+afterEvaluate {
+    android.libraryVariants.forEach { variant ->
+        variant.mergeResourcesProvider.configure {
+            dependsOn("mdiRetrieveFont")
+        }
+    }
 }
