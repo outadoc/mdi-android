@@ -51,14 +51,51 @@ dependencies {
     implementation("androidx.appcompat:appcompat:1.3.0-alpha02")
 }
 
-publishing {
-    repositories {
-        maven {
-            name = "GitHubPackages"
-            setUrl("https://maven.pkg.github.com/outadoc/mdi-android")
-            credentials {
-                username = System.getenv("GITHUB_ACTOR")
-                password = System.getenv("GITHUB_TOKEN")
+afterEvaluate {
+    publishing {
+        publications {
+            create<MavenPublication>("maven") {
+                groupId = "fr.outadoc.mdi"
+                artifactId = "mdi-android"
+                version = Version.mdiVersionName
+
+                from(components["release"])
+
+                pom {
+                    name.set("Material Design Icons for Android")
+                    description.set("An Android wrapper library for Material Design Icons")
+                    url.set("http://github.com/outadoc/mdi-android")
+
+                    licenses {
+                        license {
+                            name.set("The Apache License, Version 2.0")
+                            url.set("http://www.apache.org/licenses/LICENSE-2.0.txt")
+                        }
+                    }
+
+                    developers {
+                        developer {
+                            id.set("outadoc")
+                            name.set("Baptiste Candellier")
+                            email.set("outadoc@gmail.com")
+                        }
+                    }
+
+                    scm {
+                        connection.set("scm:git:git://github.com/outadoc/mdi-android.git")
+                    }
+                }
+            }
+        }
+
+        repositories {
+            maven {
+                name = "GitHubPackages"
+                setUrl("https://maven.pkg.github.com/outadoc/mdi-android")
+                credentials {
+                    username = System.getenv("GITHUB_ACTOR")
+                    password = System.getenv("GITHUB_TOKEN")
+                }
             }
         }
     }
