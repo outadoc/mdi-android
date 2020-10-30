@@ -16,6 +16,6 @@ jobs:
       - name: Setup Node.js environment
         uses: actions/setup-node@v2.1.2
       - name: Publish package
-        run: ./gradlew lib-mdi-android:publish
+        run: ./gradlew lib-mdi-android:assembleRelease lib-mdi-android:publish
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
