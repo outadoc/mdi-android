@@ -16,6 +16,7 @@
 
 plugins {
     id("com.android.library")
+    id("maven-publish")
     kotlin("android")
 }
 
@@ -48,6 +49,19 @@ kotlin {
 dependencies {
     implementation(project(":lib-mdi-common"))
     implementation("androidx.appcompat:appcompat:1.3.0-alpha02")
+}
+
+publishing {
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            setUrl("https://maven.pkg.github.com/outadoc/mdi-android")
+            credentials {
+                username = System.getenv("GITHUB_ACTOR")
+                password = System.getenv("GITHUB_TOKEN")
+            }
+        }
+    }
 }
 
 val scriptDirectory = "${rootProject.projectDir}/script"
