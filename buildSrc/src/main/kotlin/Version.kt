@@ -18,7 +18,9 @@ import java.nio.file.Paths
 
 object Version {
 
-    val mdiVersionName: String by lazy {
+    private const val REVISION = 'a'
+
+    private val npmPackageVersion: String by lazy {
         ProcessBuilder()
             .directory(Paths.get("").toAbsolutePath().toFile())
             .command("./script/get-mdi-version.sh")
@@ -33,10 +35,19 @@ object Version {
             }
     }
 
+    val mdiVersionName: String = "$npmPackageVersion-$REVISION"
+
+    private val alphabet = 'a'..'z'
+    private val numericRevision = alphabet.indexOf(REVISION)
+
     val mdiVersionCode: Int
-        get() = mdiVersionName
-            .split(".")
-            .map { it.padStart(3, '0') }
-            .joinToString("")
-            .toInt()
+        get() {
+            val str = npmPackageVersion
+                .split(".")
+                .joinToString("") {
+                    it.padStart(3, '0')
+                }
+
+            return "${str}${numericRevision}".toInt()
+        }
 }
