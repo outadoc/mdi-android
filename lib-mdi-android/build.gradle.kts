@@ -57,7 +57,7 @@ afterEvaluate {
             create<MavenPublication>("maven") {
                 groupId = "fr.outadoc.mdi"
                 artifactId = "mdi-android"
-                version = Version.mdiVersionName
+                version = android.defaultConfig.versionName
 
                 from(components["release"])
 
