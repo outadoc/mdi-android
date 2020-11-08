@@ -18,7 +18,7 @@ import java.nio.file.Path
 
 object Version {
 
-    private const val MDI_LIB_REVISION = 'f'
+    private const val MDI_LIB_REVISION = 'g'
     const val COMMON_LIB_VERSION = "1.0.0"
 
     private fun getNpmPackageVersion(projectRootPath: Path): String {

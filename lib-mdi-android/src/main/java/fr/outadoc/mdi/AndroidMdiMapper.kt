@@ -30,7 +30,7 @@ import java.util.TreeMap
 public class AndroidMdiMapper(context: Context) : MdiMapper {
 
     companion object {
-        private const val FILENAME = "src/main/assets/mdi_map.txt"
+        private const val FILENAME = "mdi_map.txt"
         private const val SEPARATOR = ' '
     }
 
