@@ -18,7 +18,8 @@ import java.nio.file.Path
 
 object Version {
 
-    private const val REVISION = 'b'
+    private const val MDI_LIB_REVISION = 'c'
+    const val COMMON_LIB_VERSION = "1.0.0"
 
     private fun getNpmPackageVersion(projectRootPath: Path): String {
         ProcessBuilder()
@@ -36,11 +37,11 @@ object Version {
     }
 
     fun getMdiVersionName(projectRootPath: Path): String {
-        return "${getNpmPackageVersion(projectRootPath)}-$REVISION"
+        return "${getNpmPackageVersion(projectRootPath)}-$MDI_LIB_REVISION"
     }
 
     private val alphabet = 'a'..'z'
-    private val numericRevision = alphabet.indexOf(REVISION)
+    private val numericRevision = alphabet.indexOf(MDI_LIB_REVISION)
 
     fun getMdiVersionCode(projectRootPath: Path): Int {
         val str = getNpmPackageVersion(projectRootPath)
