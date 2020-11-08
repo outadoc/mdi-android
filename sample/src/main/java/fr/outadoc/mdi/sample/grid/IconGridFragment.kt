@@ -21,11 +21,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import fr.outadoc.mdi.sample.databinding.FragmentGridBinding
 
 class IconGridFragment : Fragment() {
 
     private var binding: FragmentGridBinding? = null
+    private val viewModel: IconGridViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -34,6 +36,13 @@ class IconGridFragment : Fragment() {
     ): View? {
         binding = FragmentGridBinding.inflate(inflater, container, false)
         return binding!!.root
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        viewModel.allIcons.observe(viewLifecycleOwner) { allIcons ->
+
+        }
     }
 
     override fun onDestroyView() {
