@@ -28,8 +28,8 @@ android {
         minSdkVersion(21)
         targetSdkVersion(30)
 
-        versionCode(Version.mdiVersionCode)
-        versionName(Version.mdiVersionName)
+        versionCode(Version.getMdiVersionCode(project.rootDir.toPath()))
+        versionName(Version.getMdiVersionName(project.rootDir.toPath()))
     }
 
     compileOptions {
