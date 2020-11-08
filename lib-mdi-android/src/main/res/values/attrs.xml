@@ -16,7 +16,11 @@
   -->
 
 <resources>
+
+    <attr name="icon" format="string" />
+
     <declare-styleable name="MdiFontIconView">
-        <attr name="icon" format="string" />
+        <attr name="icon" />
     </declare-styleable>
+
 </resources>
