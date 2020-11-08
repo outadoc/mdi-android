@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Copyright 2020 Baptiste Candellier
   ~
   ~    Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,17 +14,9 @@
   ~    limitations under the License.
   -->
 
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="fr.outadoc.mdi.sample">
+<androidx.recyclerview.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/recyclerView_iconGrid"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-    <application
-        android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
-        android:supportsRtl="true"
-        android:theme="@style/Theme.Mdiandroid">
-
-    </application>
-
-</manifest>
+</androidx.recyclerview.widget.RecyclerView>
