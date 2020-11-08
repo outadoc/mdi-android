@@ -14,15 +14,16 @@
  *    limitations under the License.
  */
 
-import java.nio.file.Paths
+import java.nio.file.Path
 
 object Version {
 
-    private const val REVISION = 'b'
+    private const val MDI_LIB_REVISION = 'c'
+    const val COMMON_LIB_VERSION = "1.0.0"
 
-    private val npmPackageVersion: String by lazy {
+    private fun getNpmPackageVersion(projectRootPath: Path): String {
         ProcessBuilder()
-            .directory(Paths.get("").toAbsolutePath().toFile())
+            .directory(projectRootPath.toFile())
             .command("./script/get-mdi-version.sh")
             .start()
             .let { process ->
@@ -30,24 +31,25 @@ object Version {
                 process.inputStream
                     .bufferedReader()
                     .use { reader ->
-                        return@lazy reader.readLine().trim()
+                        return reader.readLine().trim()
                     }
             }
     }
 
-    val mdiVersionName: String = "$npmPackageVersion-$REVISION"
+    fun getMdiVersionName(projectRootPath: Path): String {
+        return "${getNpmPackageVersion(projectRootPath)}-$MDI_LIB_REVISION"
+    }
 
     private val alphabet = 'a'..'z'
-    private val numericRevision = alphabet.indexOf(REVISION)
+    private val numericRevision = alphabet.indexOf(MDI_LIB_REVISION)
 
-    val mdiVersionCode: Int
-        get() {
-            val str = npmPackageVersion
-                .split(".")
-                .joinToString("") {
-                    it.padStart(3, '0')
-                }
+    fun getMdiVersionCode(projectRootPath: Path): Int {
+        val str = getNpmPackageVersion(projectRootPath)
+            .split(".")
+            .joinToString("") {
+                it.padStart(3, '0')
+            }
 
-            return "${str}${numericRevision}".toInt()
-        }
+        return "${str}${numericRevision}".toInt()
+    }
 }

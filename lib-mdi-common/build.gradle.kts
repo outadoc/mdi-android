@@ -16,6 +16,7 @@
 
 plugins {
     id("java-library")
+    id("maven-publish")
     id("kotlin")
 }
 
@@ -26,4 +27,29 @@ java {
 
 kotlin {
     explicitApi()
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            create<MavenPublication>("commonLibMaven") {
+                groupId = Publishing.groupId
+                artifactId = "mdi-common"
+                version = Version.COMMON_LIB_VERSION
+
+                from(components["java"])
+            }
+        }
+
+        repositories {
+            maven {
+                name = "GitHubPackages"
+                setUrl(Publishing.repoUrl)
+                credentials {
+                    username = Publishing.repoUsername
+                    password = Publishing.repoPassword
+                }
+            }
+        }
+    }
 }
