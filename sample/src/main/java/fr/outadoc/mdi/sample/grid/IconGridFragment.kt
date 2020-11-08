@@ -22,8 +22,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.GridLayoutManager
 import fr.outadoc.mdi.sample.databinding.FragmentGridBinding
+import java.io.BufferedReader
+import java.io.InputStreamReader
 
+@Suppress("unused")
 class IconGridFragment : Fragment() {
 
     private var binding: FragmentGridBinding? = null
@@ -34,19 +38,36 @@ class IconGridFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentGridBinding.inflate(inflater, container, false)
+        binding = FragmentGridBinding.inflate(inflater, container, false).apply {
+            recyclerViewIconGrid.layoutManager = GridLayoutManager(context, ITEM_SPAN)
+            recyclerViewIconGrid.adapter = IconGridAdapter()
+        }
         return binding!!.root
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewModel.allIcons.observe(viewLifecycleOwner) { allIcons ->
+            binding?.adapter?.submitList(allIcons.toList())
+        }
 
+        context?.let { context ->
+            viewModel.loadIcons(
+                context.assets.open(MAP_FILENAME).reader().buffered()
+            )
         }
     }
+
+    private val FragmentGridBinding.adapter: IconGridAdapter
+        get() = recyclerViewIconGrid.adapter as IconGridAdapter
 
     override fun onDestroyView() {
         super.onDestroyView()
         binding = null
+    }
+
+    companion object {
+        const val ITEM_SPAN = 5
+        const val MAP_FILENAME = "mdi_map.txt"
     }
 }

@@ -22,7 +22,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import fr.outadoc.mdi.common.MdiFontIcon
 
-class IconGridAdapter : ListAdapter<MdiFontIcon, IconViewHolder>(IconItemCallback) {
+class IconGridAdapter : ListAdapter<MdiFontIcon, IconGridAdapter.IconViewHolder>(IconItemCallback) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): IconViewHolder {
         TODO("Not yet implemented")
@@ -31,8 +31,8 @@ class IconGridAdapter : ListAdapter<MdiFontIcon, IconViewHolder>(IconItemCallbac
     override fun onBindViewHolder(holder: IconViewHolder, position: Int) {
         TODO("Not yet implemented")
     }
-}
 
-class IconViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
+    class IconViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
 
+    }
 }

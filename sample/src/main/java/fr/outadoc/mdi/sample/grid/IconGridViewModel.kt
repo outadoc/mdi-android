@@ -21,7 +21,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import fr.outadoc.mdi.common.MdiFontIcon
 import fr.outadoc.mdi.toIconOrNull
-import java.io.File
+import java.io.BufferedReader
 
 class IconGridViewModel : ViewModel() {
 
@@ -29,9 +29,9 @@ class IconGridViewModel : ViewModel() {
     val allIcons: LiveData<Sequence<MdiFontIcon>>
         get() = _allIcons
 
-    fun loadIcons(iconMap: File) {
+    fun loadIcons(iconMap: BufferedReader) {
         _allIcons.value = sequence {
-            iconMap.useLines { lines: Sequence<String> ->
+            iconMap.useLines { lines ->
                 lines.mapNotNull { name -> name.takeWhile { it != ' ' }.toIconOrNull() }
             }
         }
