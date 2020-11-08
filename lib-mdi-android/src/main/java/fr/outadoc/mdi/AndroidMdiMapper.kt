@@ -17,6 +17,7 @@
 package fr.outadoc.mdi
 
 import android.content.Context
+import fr.outadoc.mdi.common.MdiFontIcon
 import fr.outadoc.mdi.common.MdiStringRef
 import fr.outadoc.mdi.common.MdiMapper
 import java.io.BufferedReader
@@ -46,8 +47,8 @@ public class AndroidMdiMapper(context: Context) : MdiMapper {
         }
     }
 
-    override fun getIcon(@MdiStringRef iconName: String): fr.outadoc.mdi.common.MdiFontIcon? {
-        return iconMap[iconName]?.let { fr.outadoc.mdi.common.MdiFontIcon(it) }
+    override fun getIcon(@MdiStringRef iconName: String): MdiFontIcon? {
+        return iconMap[iconName]?.let { MdiFontIcon(name = iconName, unicodePoint = it) }
     }
 
     private fun loadMap(reader: BufferedReader): Map<String, String> {

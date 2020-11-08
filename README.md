@@ -38,7 +38,18 @@ dependencies {
 ```
 
 ## Usage
-Your icons will be displayed using a standard appcompat `TextView`. You just have to set the `TextAppearance.MaterialDesignIcons` on it.
+You can use a custom view to display your icons:
+
+```xml
+<fr.outadoc.mdi.MdiFontIconView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:textSize="32sp"
+    app:iconName="toaster-oven" />
+```
+
+You can also use a standard appcompat `TextView`. You just have to set the `TextAppearance.MaterialDesignIcons`
+text appearance on it.
 
 ```xml
 <TextView
@@ -53,15 +64,18 @@ In code, setup the library and convert the icon's reference into the right objec
 
 ```kt
 // Create an instance of the Android icon mapper with a Context,
-// and set it on the MdiMapperLocator.
+// and set it on the MdiMapperLocator. Do this in your Application class or similar.
 MdiMapperLocator.instance = AndroidMdiMapper(applicationContext)
 
 // Convert an icon's reference to a proper font icon instance
-val icon1: MdiFontIcon  = "mdi:information".toIcon()
-val icon2: MdiFontIcon? = "mdi:information".toIconOrNull()
+val icon1: MdiFontIcon  = "toaster-oven".toIcon()
+val icon2: MdiFontIcon? = "toaster-oven".toIconOrNull()
 
 // Set the icon on the TextView
 textView_fontIcon_example.setText(icon1.unicodePoint)
+
+// Or using the ktx
+textView_fontIcon_example.setIcon(icon1)
 ```
 
 ## License

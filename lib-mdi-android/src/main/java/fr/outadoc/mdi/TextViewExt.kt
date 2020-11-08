@@ -14,6 +14,12 @@
  *    limitations under the License.
  */
 
-package fr.outadoc.mdi.common
+package fr.outadoc.mdi
 
-public data class MdiFontIcon(val name: String, val unicodePoint: String)
+import android.widget.TextView
+import fr.outadoc.mdi.common.MdiFontIcon
+
+fun TextView.setIcon(icon: MdiFontIcon) {
+    setText(icon.unicodePoint, TextView.BufferType.NORMAL)
+    contentDescription = icon.name
+}
