@@ -33,7 +33,7 @@ afterEvaluate {
     publishing {
         publications {
             create<MavenPublication>("commonLibMaven") {
-                groupId = "fr.outadoc.mdi"
+                groupId = Publishing.groupId
                 artifactId = "mdi-common"
                 version = Version.getMdiVersionName(project.rootDir.toPath())
 
@@ -44,10 +44,10 @@ afterEvaluate {
         repositories {
             maven {
                 name = "GitHubPackages"
-                setUrl("https://maven.pkg.github.com/outadoc/mdi-android")
+                setUrl(Publishing.repoUrl)
                 credentials {
-                    username = System.getenv("GITHUB_ACTOR")
-                    password = System.getenv("GITHUB_TOKEN")
+                    username = Publishing.repoUsername
+                    password = Publishing.repoPassword
                 }
             }
         }
