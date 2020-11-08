@@ -45,7 +45,7 @@ You can use a custom view to display your icons:
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:textSize="32sp"
-    app:icon="toaster-oven" />
+    app:iconName="toaster-oven" />
 ```
 
 You can also use a standard appcompat `TextView`. You just have to set the `TextAppearance.MaterialDesignIcons`

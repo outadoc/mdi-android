@@ -47,8 +47,8 @@ public class MdiFontIconView : AppCompatTextView {
     private fun initWithAttributes(context: Context, attrs: AttributeSet?) {
         attrs ?: return
         context.obtainStyledAttributes(attrs, R.styleable.MdiFontIconView).let { value ->
-            if (value.hasValue(R.styleable.MdiFontIconView_icon)) {
-                value.getString(R.styleable.MdiFontIconView_icon)?.let { iconStr ->
+            if (value.hasValue(R.styleable.MdiFontIconView_iconName)) {
+                value.getString(R.styleable.MdiFontIconView_iconName)?.let { iconStr ->
                     setIcon(iconStr.toIcon())
                 }
             }
