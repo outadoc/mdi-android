@@ -128,7 +128,7 @@ tasks.register("mdiRetrieveFont") {
 
 afterEvaluate {
     android.libraryVariants.forEach { variant ->
-        variant.mergeResourcesProvider.configure {
+        variant.preBuildProvider.configure {
             dependsOn("mdiRetrieveFont")
         }
     }
