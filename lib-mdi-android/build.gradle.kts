@@ -47,7 +47,7 @@ kotlin {
 }
 
 dependencies {
-    implementation(project(":lib-mdi-common"))
+    api(project(":lib-mdi-common"))
     implementation("androidx.appcompat:appcompat:1.3.0-alpha02")
 }
 
