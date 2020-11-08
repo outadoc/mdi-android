@@ -21,4 +21,5 @@ import fr.outadoc.mdi.common.MdiFontIcon
 
 fun TextView.setIcon(icon: MdiFontIcon) {
     setText(icon.unicodePoint, TextView.BufferType.NORMAL)
+    contentDescription = icon.name
 }
