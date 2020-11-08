@@ -16,6 +16,7 @@
 
 plugins {
     id("java-library")
+    id("maven-publish")
     id("kotlin")
 }
 
@@ -26,4 +27,29 @@ java {
 
 kotlin {
     explicitApi()
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            create<MavenPublication>("commonLibMaven") {
+                groupId = "fr.outadoc.mdi"
+                artifactId = "mdi-common"
+                version = Version.getMdiVersionName(project.rootDir.toPath())
+
+                from(components["java"])
+            }
+        }
+
+        repositories {
+            maven {
+                name = "GitHubPackages"
+                setUrl("https://maven.pkg.github.com/outadoc/mdi-android")
+                credentials {
+                    username = System.getenv("GITHUB_ACTOR")
+                    password = System.getenv("GITHUB_TOKEN")
+                }
+            }
+        }
+    }
 }

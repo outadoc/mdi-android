@@ -54,37 +54,12 @@ dependencies {
 afterEvaluate {
     publishing {
         publications {
-            create<MavenPublication>("maven") {
+            create<MavenPublication>("androidLibMaven") {
                 groupId = "fr.outadoc.mdi"
                 artifactId = "mdi-android"
                 version = android.defaultConfig.versionName
 
                 from(components["release"])
-
-                pom {
-                    name.set("Material Design Icons for Android")
-                    description.set("An Android wrapper library for Material Design Icons")
-                    url.set("http://github.com/outadoc/mdi-android")
-
-                    licenses {
-                        license {
-                            name.set("The Apache License, Version 2.0")
-                            url.set("http://www.apache.org/licenses/LICENSE-2.0.txt")
-                        }
-                    }
-
-                    developers {
-                        developer {
-                            id.set("outadoc")
-                            name.set("Baptiste Candellier")
-                            email.set("outadoc@gmail.com")
-                        }
-                    }
-
-                    scm {
-                        connection.set("scm:git:git://github.com/outadoc/mdi-android.git")
-                    }
-                }
             }
         }
 
