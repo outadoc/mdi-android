@@ -20,7 +20,7 @@ import android.content.Context
 import android.util.AttributeSet
 import androidx.appcompat.widget.*
 
-class MdiFontIconView : AppCompatTextView {
+public class MdiFontIconView : AppCompatTextView {
 
     constructor(context: Context) : super(context, null)
 
@@ -28,15 +28,30 @@ class MdiFontIconView : AppCompatTextView {
         context,
         attrs,
         android.R.attr.textViewStyle
-    )
+    ) {
+        initWithAttributes(context, attrs)
+    }
 
     constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(
         context,
         attrs,
         defStyleAttr
-    )
+    ) {
+        initWithAttributes(context, attrs)
+    }
 
     init {
         setTextAppearance(R.style.TextAppearance_MaterialDesignIcons)
+    }
+
+    private fun initWithAttributes(context: Context, attrs: AttributeSet?) {
+        attrs ?: return
+        context.obtainStyledAttributes(attrs, R.styleable.MdiFontIconView).let { value ->
+            if (value.hasValue(R.styleable.MdiFontIconView_icon)) {
+                value.getString(R.styleable.MdiFontIconView_icon)?.let { iconStr ->
+                    setIcon(iconStr.toIcon())
+                }
+            }
+        }
     }
 }
