@@ -16,4 +16,4 @@
 
 package fr.outadoc.mdi.common
 
-public data class MdiFontIcon(val unicodePoint: String)
+public data class MdiFontIcon(val name: String, val unicodePoint: String)
