@@ -67,4 +67,5 @@ dependencies {
 
     implementation("com.google.android.material:material:1.3.0-alpha03")
     implementation("me.zhanghai.android.fastscroll:library:1.1.5")
+    implementation("de.halfbit:edge-to-edge:0.10")
 }
