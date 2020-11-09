@@ -27,8 +27,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import com.google.android.material.snackbar.Snackbar
-import de.halfbit.edgetoedge.Edge
-import de.halfbit.edgetoedge.edgeToEdge
 import fr.outadoc.mdi.common.MdiFontIcon
 import fr.outadoc.mdi.sample.R
 import fr.outadoc.mdi.sample.databinding.FragmentGridBinding
@@ -91,16 +89,6 @@ class IconGridFragment : Fragment() {
         }
 
         return binding!!.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        binding?.apply {
-            edgeToEdge {
-                recyclerViewIconGrid.fit { Edge.Bottom }
-            }
-        }
     }
 
     private fun onItemClick(icon: MdiFontIcon) {

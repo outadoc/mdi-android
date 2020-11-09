@@ -14,8 +14,7 @@
   ~    limitations under the License.
   -->
 
-<resources>
-
+<resources xmlns:tools="http://schemas.android.com/tools">
     <style name="Theme.MdiSample" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="colorPrimary">#3949AB</item>
         <item name="colorPrimaryVariant">#334198</item>
@@ -25,8 +24,6 @@
         <item name="colorSecondaryVariant">#EA8200</item>
         <item name="colorOnSecondary">#000</item>
 
-        <item name="android:statusBarColor">?colorPrimaryVariant</item>
-        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:statusBarColor" tools:targetApi="l">?colorPrimaryVariant</item>
     </style>
-
 </resources>
