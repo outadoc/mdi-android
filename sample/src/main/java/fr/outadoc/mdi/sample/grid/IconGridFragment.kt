@@ -24,6 +24,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import fr.outadoc.mdi.sample.databinding.FragmentGridBinding
+import me.zhanghai.android.fastscroll.FastScrollerBuilder
 import java.io.BufferedReader
 import java.io.InputStreamReader
 
@@ -41,6 +42,10 @@ class IconGridFragment : Fragment() {
         binding = FragmentGridBinding.inflate(inflater, container, false).apply {
             recyclerViewIconGrid.layoutManager = GridLayoutManager(context, ITEM_SPAN)
             recyclerViewIconGrid.adapter = IconGridAdapter()
+
+            FastScrollerBuilder(recyclerViewIconGrid)
+                .useMd2Style()
+                .build()
         }
 
         viewModel.allIcons.observe(viewLifecycleOwner) { allIcons ->

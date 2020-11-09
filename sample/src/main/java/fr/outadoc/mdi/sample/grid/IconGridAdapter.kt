@@ -26,8 +26,20 @@ import fr.outadoc.mdi.MdiFontIconView
 import fr.outadoc.mdi.common.MdiFontIcon
 import fr.outadoc.mdi.sample.R
 import fr.outadoc.mdi.setIcon
+import me.zhanghai.android.fastscroll.PopupTextProvider
 
-class IconGridAdapter : ListAdapter<MdiFontIcon, IconGridAdapter.IconViewHolder>(IconItemCallback) {
+class IconGridAdapter : ListAdapter<MdiFontIcon, IconGridAdapter.IconViewHolder>(IconItemCallback),
+    PopupTextProvider {
+
+    private var alphabetMap: List<String>? = null
+
+    override fun onCurrentListChanged(
+        previousList: MutableList<MdiFontIcon>,
+        currentList: MutableList<MdiFontIcon>
+    ) {
+        super.onCurrentListChanged(previousList, currentList)
+        alphabetMap = currentList.map { icon -> icon.initial }
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): IconViewHolder {
         val li = LayoutInflater.from(parent.context)
@@ -45,4 +57,11 @@ class IconGridAdapter : ListAdapter<MdiFontIcon, IconGridAdapter.IconViewHolder>
         val icon: MdiFontIconView = view.findViewById(R.id.fontIconView_icon)
         val name: TextView = view.findViewById(R.id.textView_iconName)
     }
+
+    override fun getPopupText(position: Int): String {
+        return alphabetMap?.get(position) ?: getItem(position).initial
+    }
+
+    private val MdiFontIcon.initial: String
+        get() = name.first().toUpperCase().toString()
 }
