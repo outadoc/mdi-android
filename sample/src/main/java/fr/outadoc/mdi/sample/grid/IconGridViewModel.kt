@@ -16,22 +16,27 @@
 
 package fr.outadoc.mdi.sample.grid
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import fr.outadoc.mdi.common.MdiFontIcon
 import fr.outadoc.mdi.toIconOrNull
+import io.uniflow.androidx.flow.AndroidDataFlow
+import io.uniflow.core.flow.data.UIState
+import io.uniflow.core.threading.onIO
 import java.io.BufferedReader
 
-class IconGridViewModel : ViewModel() {
+class IconGridViewModel : AndroidDataFlow(defaultState = State.Loading) {
 
-    private val _allIcons = MutableLiveData<List<MdiFontIcon>>()
-    val allIcons: LiveData<List<MdiFontIcon>>
-        get() = _allIcons
+    sealed class State : UIState() {
+        object Loading : State()
+        class Ready(val icons: List<MdiFontIcon>) : State()
+    }
 
-    fun loadIcons(iconMap: BufferedReader) {
-        _allIcons.value = iconMap.useLines { lines ->
-            lines.mapNotNull { name -> name.takeWhile { it != ' ' }.toIconOrNull() }.toList()
+    fun loadIcons(iconMap: BufferedReader) = action {
+        onIO {
+            val icons = iconMap.useLines { lines ->
+                lines.mapNotNull { name -> name.takeWhile { it != ' ' }.toIconOrNull() }
+                    .toList()
+            }
+            setState { State.Ready(icons) }
         }
     }
 }
