@@ -25,15 +25,13 @@ import java.io.BufferedReader
 
 class IconGridViewModel : ViewModel() {
 
-    private val _allIcons = MutableLiveData<Sequence<MdiFontIcon>>()
-    val allIcons: LiveData<Sequence<MdiFontIcon>>
+    private val _allIcons = MutableLiveData<List<MdiFontIcon>>()
+    val allIcons: LiveData<List<MdiFontIcon>>
         get() = _allIcons
 
     fun loadIcons(iconMap: BufferedReader) {
-        _allIcons.value = sequence {
-            iconMap.useLines { lines ->
-                lines.mapNotNull { name -> name.takeWhile { it != ' ' }.toIconOrNull() }
-            }
+        _allIcons.value = iconMap.useLines { lines ->
+            lines.mapNotNull { name -> name.takeWhile { it != ' ' }.toIconOrNull() }.toList()
         }
     }
 }

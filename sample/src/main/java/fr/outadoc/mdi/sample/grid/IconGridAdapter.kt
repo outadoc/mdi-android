@@ -16,23 +16,33 @@
 
 package fr.outadoc.mdi.sample.grid
 
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import fr.outadoc.mdi.MdiFontIconView
 import fr.outadoc.mdi.common.MdiFontIcon
+import fr.outadoc.mdi.sample.R
+import fr.outadoc.mdi.setIcon
 
 class IconGridAdapter : ListAdapter<MdiFontIcon, IconGridAdapter.IconViewHolder>(IconItemCallback) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): IconViewHolder {
-        TODO("Not yet implemented")
+        val li = LayoutInflater.from(parent.context)
+        val view = li.inflate(R.layout.item_icon, parent, false)
+        return IconViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: IconViewHolder, position: Int) {
-        TODO("Not yet implemented")
+        val icon = getItem(position)
+        holder.icon.setIcon(icon)
+        holder.name.setText(icon.name, TextView.BufferType.NORMAL)
     }
 
-    class IconViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
-
+    class IconViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        val icon: MdiFontIconView = view.findViewById(R.id.fontIconView_icon)
+        val name: TextView = view.findViewById(R.id.textView_iconName)
     }
 }

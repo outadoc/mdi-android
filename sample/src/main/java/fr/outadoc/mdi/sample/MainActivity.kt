@@ -17,13 +17,15 @@
 package fr.outadoc.mdi.sample
 
 import android.os.Bundle
-import android.os.PersistableBundle
-import androidx.fragment.app.FragmentActivity
+import androidx.appcompat.app.AppCompatActivity
+import fr.outadoc.mdi.AndroidMdiMapper
+import fr.outadoc.mdi.common.MdiMapperLocator
 
-class MainActivity : FragmentActivity() {
+class MainActivity : AppCompatActivity() {
 
-    override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
-        super.onCreate(savedInstanceState, persistentState)
-        setContentView(R.layout.fragment_grid)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        MdiMapperLocator.instance = AndroidMdiMapper(this)
+        setContentView(R.layout.activity_main)
     }
 }

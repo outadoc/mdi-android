@@ -23,7 +23,7 @@ import fr.outadoc.mdi.common.NoSuchIconException
 import java.util.Locale
 
 fun @MdiStringRef String.toIconOrNull(): MdiFontIcon? {
-    val cleanup = takeLastWhile { it != ':' }.toLowerCase(Locale.US)
+    val cleanup = toLowerCase(Locale.US).replace("mdi:", "")
     return MdiMapperLocator.instance?.getIcon(cleanup)
 }
 

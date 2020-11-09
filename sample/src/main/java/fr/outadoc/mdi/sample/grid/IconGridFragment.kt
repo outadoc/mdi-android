@@ -42,14 +42,16 @@ class IconGridFragment : Fragment() {
             recyclerViewIconGrid.layoutManager = GridLayoutManager(context, ITEM_SPAN)
             recyclerViewIconGrid.adapter = IconGridAdapter()
         }
+
+        viewModel.allIcons.observe(viewLifecycleOwner) { allIcons ->
+            binding?.adapter?.submitList(allIcons)
+        }
+
         return binding!!.root
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel.allIcons.observe(viewLifecycleOwner) { allIcons ->
-            binding?.adapter?.submitList(allIcons.toList())
-        }
 
         context?.let { context ->
             viewModel.loadIcons(
