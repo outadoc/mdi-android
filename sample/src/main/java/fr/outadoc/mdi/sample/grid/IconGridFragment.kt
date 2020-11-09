@@ -54,7 +54,13 @@ class IconGridFragment : Fragment() {
 
         onStates(viewModel) { state ->
             when (state) {
-                is IconGridViewModel.State.Ready -> binding?.adapter?.submitList(state.icons)
+                is IconGridViewModel.State.Loading -> {
+                    binding?.viewFlipperGrid?.displayedChild = CHILD_LOADING
+                }
+                is IconGridViewModel.State.Ready -> {
+                    binding?.adapter?.submitList(state.icons)
+                    binding?.viewFlipperGrid?.displayedChild = CHILD_GRID
+                }
             }
         }
 
@@ -82,5 +88,7 @@ class IconGridFragment : Fragment() {
     companion object {
         const val ITEM_SPAN = 4
         const val MAP_FILENAME = "mdi_map.txt"
+        const val CHILD_LOADING = 0
+        const val CHILD_GRID = 1
     }
 }
