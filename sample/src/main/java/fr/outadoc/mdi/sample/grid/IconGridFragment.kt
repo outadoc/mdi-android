@@ -41,8 +41,11 @@ class IconGridFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentGridBinding.inflate(inflater, container, false).apply {
-            recyclerViewIconGrid.layoutManager = GridLayoutManager(context, ITEM_SPAN)
-            recyclerViewIconGrid.adapter = IconGridAdapter()
+            with(recyclerViewIconGrid) {
+                layoutManager = GridLayoutManager(context, ITEM_SPAN)
+                adapter = IconGridAdapter()
+                setHasFixedSize(true)
+            }
 
             FastScrollerBuilder(recyclerViewIconGrid)
                 .useMd2Style()
