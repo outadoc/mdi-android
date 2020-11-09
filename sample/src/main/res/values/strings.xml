@@ -17,4 +17,5 @@
 <resources>
     <string name="app_name">mdi-android</string>
     <string name="grid_copiedToClipboard">Copied "%1$s" to the clipboard!</string>
+    <string name="grid_mdiLabelWithVersion">Material Design Icons v%1$s</string>
 </resources>

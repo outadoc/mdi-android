@@ -32,8 +32,7 @@ import fr.outadoc.mdi.sample.R
 import fr.outadoc.mdi.sample.databinding.FragmentGridBinding
 import io.uniflow.androidx.flow.onStates
 import me.zhanghai.android.fastscroll.FastScrollerBuilder
-import java.io.BufferedReader
-import java.io.InputStreamReader
+
 
 @Suppress("unused")
 class IconGridFragment : Fragment() {
@@ -73,6 +72,8 @@ class IconGridFragment : Fragment() {
             FastScrollerBuilder(recyclerViewIconGrid)
                 .useMd2Style()
                 .build()
+
+            toolbarGrid.title = getString(R.string.grid_mdiLabelWithVersion, mdiVersion)
         }
 
         onStates(viewModel) { state ->
@@ -104,6 +105,9 @@ class IconGridFragment : Fragment() {
     private val FragmentGridBinding.adapter: IconGridAdapter
         get() = recyclerViewIconGrid.adapter as IconGridAdapter
 
+    private val mdiVersion: String
+        get() = fr.outadoc.mdi.BuildConfig.VERSION_NAME
+
     override fun onDestroyView() {
         super.onDestroyView()
         binding = null
@@ -112,6 +116,7 @@ class IconGridFragment : Fragment() {
     companion object {
         const val ITEM_SPAN = 4
         const val MAP_FILENAME = "mdi_map.txt"
+
         const val CHILD_LOADING = 0
         const val CHILD_GRID = 1
     }
