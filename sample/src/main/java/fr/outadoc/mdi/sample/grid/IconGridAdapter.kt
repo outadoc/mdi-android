@@ -33,6 +33,8 @@ class IconGridAdapter : ListAdapter<MdiFontIcon, IconGridAdapter.IconViewHolder>
 
     private var alphabetMap: List<String>? = null
 
+    var clickListener: IconGridItemClickListener? = null
+
     override fun onCurrentListChanged(
         previousList: MutableList<MdiFontIcon>,
         currentList: MutableList<MdiFontIcon>
@@ -51,6 +53,10 @@ class IconGridAdapter : ListAdapter<MdiFontIcon, IconGridAdapter.IconViewHolder>
         val icon = getItem(position)
         holder.icon.setIcon(icon)
         holder.name.setText(icon.name, TextView.BufferType.NORMAL)
+        holder.itemView.setOnLongClickListener {
+            clickListener?.onItemClick(icon)
+            true
+        }
     }
 
     class IconViewHolder(view: View) : RecyclerView.ViewHolder(view) {
