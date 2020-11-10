@@ -57,6 +57,7 @@ object Version {
                 it.padStart(3, '0')
             }
 
-        return "${str}${numericRevision}".toInt()
+        val revisionStr = numericRevision.toString().padStart(2, '0')
+        return "${str}${revisionStr}".toInt()
     }
 }

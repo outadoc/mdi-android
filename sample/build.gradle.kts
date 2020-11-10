@@ -24,7 +24,7 @@ android {
     buildToolsVersion("30.0.1")
 
     defaultConfig {
-        applicationId = "fr.outadoc.mdi"
+        applicationId = "fr.outadoc.mdi.sample"
         minSdkVersion(Version.minSdkVersion)
         targetSdkVersion(Version.targetSdkVersion)
         versionCode(Version.sampleAppVersionCode)
