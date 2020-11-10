@@ -19,4 +19,6 @@
     <string name="grid_copiedToClipboard">Copied "%1$s" to the clipboard!</string>
     <string name="grid_title">Material Design Icons Preview</string>
     <string name="grid_subtitle">v%1$s</string>
+    <string name="grid_search_action">Search</string>
+    <string name="grid_search_hint">Search for an icon…</string>
 </resources>

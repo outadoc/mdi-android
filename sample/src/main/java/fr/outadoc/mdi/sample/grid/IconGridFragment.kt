@@ -25,6 +25,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.SearchView
 import androidx.core.content.getSystemService
+import androidx.core.view.isGone
+import androidx.core.view.isInvisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
@@ -72,6 +74,9 @@ class IconGridFragment : Fragment() {
 
             val searchItem: MenuItem = toolbarGrid.menu.findItem(R.id.item_search)
             val searchView = searchItem.actionView as SearchView
+
+            searchView.queryHint = getString(R.string.grid_search_hint)
+            searchView.findViewById<View>(androidx.appcompat.R.id.search_plate).background = null
             searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
 
                 override fun onQueryTextSubmit(query: String?): Boolean {
