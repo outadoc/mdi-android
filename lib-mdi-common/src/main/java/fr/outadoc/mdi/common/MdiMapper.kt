@@ -18,4 +18,5 @@ package fr.outadoc.mdi.common
 
 public interface MdiMapper {
     public fun getIcon(@MdiStringRef iconName: String): MdiFontIcon?
+    public fun getAllIcons(): List<MdiFontIcon>
 }

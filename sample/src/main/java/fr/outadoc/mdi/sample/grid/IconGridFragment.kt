@@ -45,12 +45,7 @@ class IconGridFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         clipboardManager = requireContext().getSystemService()
-
-        context?.let { context ->
-            viewModel.loadIcons(
-                context.assets.open(MAP_FILENAME).reader().buffered()
-            )
-        }
+        viewModel.loadIcons()
     }
 
     override fun onCreateView(
@@ -93,9 +88,9 @@ class IconGridFragment : Fragment() {
 
     private fun onItemClick(icon: MdiFontIcon) {
         clipboardManager?.setPrimaryClip(ClipData.newPlainText(icon.name, icon.name))
-        binding?.recyclerViewIconGrid?.let { v ->
+        binding?.recyclerViewIconGrid?.let { view ->
             Snackbar.make(
-                v,
+                view,
                 getString(R.string.grid_copiedToClipboard, icon.name),
                 Snackbar.LENGTH_SHORT
             ).show()
@@ -115,7 +110,6 @@ class IconGridFragment : Fragment() {
 
     companion object {
         const val ITEM_SPAN = 4
-        const val MAP_FILENAME = "mdi_map.txt"
 
         const val CHILD_LOADING = 0
         const val CHILD_GRID = 1
