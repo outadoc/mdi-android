@@ -21,12 +21,12 @@ plugins {
 }
 
 android {
-    compileSdkVersion(30)
+    compileSdkVersion(Version.targetSdkVersion)
     buildToolsVersion("30.0.1")
 
     defaultConfig {
-        minSdkVersion(21)
-        targetSdkVersion(30)
+        minSdkVersion(Version.minSdkVersion)
+        targetSdkVersion(Version.targetSdkVersion)
 
         versionCode(Version.getMdiVersionCode(project.rootDir.toPath()))
         versionName(Version.getMdiVersionName(project.rootDir.toPath()))

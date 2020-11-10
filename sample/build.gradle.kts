@@ -20,15 +20,15 @@ plugins {
 }
 
 android {
-    compileSdkVersion(30)
+    compileSdkVersion(Version.targetSdkVersion)
     buildToolsVersion("30.0.1")
 
     defaultConfig {
         applicationId = "fr.outadoc.mdi"
-        minSdkVersion(21)
-        targetSdkVersion(30)
-        versionCode(1)
-        versionName("1.0")
+        minSdkVersion(Version.minSdkVersion)
+        targetSdkVersion(Version.targetSdkVersion)
+        versionCode(Version.sampleAppVersionCode)
+        versionName(Version.sampleAppVersionName)
     }
 
     buildTypes {
