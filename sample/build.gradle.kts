@@ -25,10 +25,12 @@ android {
 
     defaultConfig {
         applicationId = "fr.outadoc.mdi.sample"
+
         minSdkVersion(Version.minSdkVersion)
         targetSdkVersion(Version.targetSdkVersion)
-        versionCode(Version.sampleAppVersionCode)
-        versionName(Version.sampleAppVersionName)
+
+        versionCode(Version.getMdiVersionCode(project.rootDir.toPath()))
+        versionName(Version.getMdiVersionName(project.rootDir.toPath()))
     }
 
     buildTypes {

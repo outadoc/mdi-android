@@ -30,8 +30,6 @@ android {
 
         versionCode(Version.getMdiVersionCode(project.rootDir.toPath()))
         versionName(Version.getMdiVersionName(project.rootDir.toPath()))
-
-        buildConfigField("String", "VERSION_NAME", "\"$versionName\"")
     }
 
     compileOptions {

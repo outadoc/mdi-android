@@ -33,6 +33,7 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import fr.outadoc.mdi.common.MdiFontIcon
+import fr.outadoc.mdi.sample.BuildConfig
 import fr.outadoc.mdi.sample.R
 import fr.outadoc.mdi.sample.databinding.FragmentGridBinding
 import io.uniflow.androidx.flow.onEvents
@@ -50,7 +51,7 @@ class IconGridFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        clipboardManager = requireContext().getSystemService()
+        clipboardManager = context?.getSystemService()
         viewModel.loadIcons()
     }
 
@@ -148,7 +149,7 @@ class IconGridFragment : Fragment() {
         get() = recyclerViewIconGrid.adapter as IconGridAdapter
 
     private val mdiVersion: String
-        get() = fr.outadoc.mdi.BuildConfig.VERSION_NAME
+        get() = BuildConfig.VERSION_NAME
 
     override fun onDestroyView() {
         super.onDestroyView()
