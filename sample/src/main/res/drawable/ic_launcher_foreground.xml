@@ -14,15 +14,16 @@
   ~    limitations under the License.
   -->
 
-<resources>
-
-    <string name="app_name">MDI Demo</string>
-    <string name="grid_copiedToClipboard">Copied "%1$s" to the clipboard!</string>
-    <string name="grid_title">Material Design Icons Preview</string>
-    <string name="grid_subtitle">v%1$s</string>
-    <string name="grid_search_action">Search</string>
-    <string name="grid_search_hint">Search for an icon…</string>
-    <string name="grid_aboutRepo_action">About mdi-android…</string>
-    <string name="grid_aboutMdi_action">About Material Design Icons…</string>
-
-</resources>
+<!-- drawable/vector_square.xml -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+  <group android:scaleX="1.71"
+      android:scaleY="1.71"
+      android:translateX="33.48"
+      android:translateY="33.48">
+      <path android:fillColor="#000" android:pathData="M2,2H8V4H16V2H22V8H20V16H22V22H16V20H8V22H2V16H4V8H2V2M16,8V6H8V8H6V16H8V18H16V16H18V8H16M4,4V6H6V4H4M18,4V6H20V4H18M4,18V20H6V18H4M18,18V20H20V18H18Z" />
+  </group>
+</vector>
