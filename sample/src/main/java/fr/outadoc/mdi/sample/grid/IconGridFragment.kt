@@ -102,6 +102,10 @@ class IconGridFragment : Fragment() {
                 }
                 true
             }
+
+            toolbarGrid.setOnClickListener {
+                recyclerViewIconGrid.scrollToPosition(0)
+            }
         }
 
         onStates(viewModel) { state ->
