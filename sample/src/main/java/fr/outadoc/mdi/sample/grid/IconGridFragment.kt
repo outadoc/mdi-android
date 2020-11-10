@@ -18,15 +18,16 @@ package fr.outadoc.mdi.sample.grid
 
 import android.content.ClipData
 import android.content.ClipboardManager
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.SearchView
+import androidx.browser.customtabs.CustomTabsIntent
 import androidx.core.content.getSystemService
-import androidx.core.view.isGone
-import androidx.core.view.isInvisible
+import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
@@ -34,6 +35,7 @@ import com.google.android.material.snackbar.Snackbar
 import fr.outadoc.mdi.common.MdiFontIcon
 import fr.outadoc.mdi.sample.R
 import fr.outadoc.mdi.sample.databinding.FragmentGridBinding
+import io.uniflow.androidx.flow.onEvents
 import io.uniflow.androidx.flow.onStates
 import me.zhanghai.android.fastscroll.FastScrollerBuilder
 
@@ -91,6 +93,14 @@ class IconGridFragment : Fragment() {
             })
 
             toolbarGrid.subtitle = getString(R.string.grid_subtitle, mdiVersion)
+            toolbarGrid.setOnMenuItemClickListener { item ->
+                when (item.itemId) {
+                    R.id.item_about_mdi -> viewModel.onAboutMdiClicked()
+                    R.id.item_about_repo -> viewModel.onAboutRepoClicked()
+                    else -> return@setOnMenuItemClickListener false
+                }
+                true
+            }
         }
 
         onStates(viewModel) { state ->
@@ -105,7 +115,22 @@ class IconGridFragment : Fragment() {
             }
         }
 
+        onEvents(viewModel) { event ->
+            when (event.take()) {
+                is IconGridViewModel.Event.OpenMdiHomePage -> openUrl(getString(R.string.url_mdi_homepage).toUri())
+                is IconGridViewModel.Event.OpenRepoPage -> openUrl(getString(R.string.url_repo).toUri())
+            }
+        }
+
         return binding!!.root
+    }
+
+    private fun openUrl(uri: Uri) {
+        context?.let {
+            CustomTabsIntent.Builder()
+                .build()
+                .launchUrl(it, uri)
+        }
     }
 
     private fun onItemClick(icon: MdiFontIcon) {

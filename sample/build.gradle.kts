@@ -64,6 +64,7 @@ dependencies {
     implementation("androidx.appcompat:appcompat:1.2.0")
     implementation("androidx.fragment:fragment-ktx:1.2.5")
     implementation("androidx.recyclerview:recyclerview:1.1.0")
+    implementation("androidx.browser:browser:1.2.0")
 
     implementation("com.google.android.material:material:1.3.0-alpha03")
     implementation("me.zhanghai.android.fastscroll:library:1.1.5")

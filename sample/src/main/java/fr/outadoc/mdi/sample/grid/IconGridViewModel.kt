@@ -20,6 +20,7 @@ import fr.outadoc.mdi.common.MdiFontIcon
 import fr.outadoc.mdi.common.MdiMapperLocator
 import io.uniflow.androidx.flow.AndroidDataFlow
 import io.uniflow.core.flow.actionOn
+import io.uniflow.core.flow.data.UIEvent
 import io.uniflow.core.flow.data.UIState
 
 class IconGridViewModel : AndroidDataFlow(defaultState = State.Loading) {
@@ -30,6 +31,11 @@ class IconGridViewModel : AndroidDataFlow(defaultState = State.Loading) {
             val allIcons: List<MdiFontIcon>,
             val filteredIcons: List<MdiFontIcon> = allIcons
         ) : State()
+    }
+
+    sealed class Event : UIEvent() {
+        object OpenMdiHomePage : Event()
+        object OpenRepoPage : Event()
     }
 
     fun loadIcons() = action {
@@ -46,5 +52,13 @@ class IconGridViewModel : AndroidDataFlow(defaultState = State.Loading) {
                 state.copy(filteredIcons = state.allIcons.filter { it.name.contains(query) })
             }
         }
+    }
+
+    fun onAboutMdiClicked() = action {
+        sendEvent { Event.OpenMdiHomePage }
+    }
+
+    fun onAboutRepoClicked() = action {
+        sendEvent { Event.OpenRepoPage }
     }
 }

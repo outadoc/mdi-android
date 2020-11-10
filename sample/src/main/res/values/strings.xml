@@ -21,4 +21,6 @@
     <string name="grid_subtitle">v%1$s</string>
     <string name="grid_search_action">Search</string>
     <string name="grid_search_hint">Search for an icon…</string>
+    <string name="grid_aboutRepo_action">About mdi-android…</string>
+    <string name="grid_aboutMdi_action">About Material Design Icons…</string>
 </resources>

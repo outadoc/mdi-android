@@ -15,25 +15,9 @@
   ~    limitations under the License.
   -->
 
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<resources>
 
-    <item
-        android:id="@+id/item_search"
-        android:icon="@drawable/ic_search"
-        android:title="@string/grid_search_action"
-        app:actionViewClass="androidx.appcompat.widget.SearchView"
-        app:showAsAction="ifRoom|collapseActionView" />
+    <string name="url_mdi_homepage">https://materialdesignicons.com</string>
+    <string name="url_repo">https://github.com/outadoc/mdi-android</string>
 
-    <item
-        android:id="@+id/item_about_repo"
-        android:title="@string/grid_aboutRepo_action"
-        app:showAsAction="never" />
-
-    <item
-        android:id="@+id/item_about_mdi"
-        android:title="@string/grid_aboutMdi_action"
-        app:showAsAction="never" />
-
-
-</menu>
+</resources>
