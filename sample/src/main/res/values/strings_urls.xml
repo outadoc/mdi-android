@@ -17,7 +17,7 @@
 
 <resources>
 
-    <string name="url_mdi_homepage">https://materialdesignicons.com</string>
-    <string name="url_repo">https://github.com/outadoc/mdi-android</string>
+    <string name="url_mdi_homepage" translatable="false">https://materialdesignicons.com</string>
+    <string name="url_repo" translatable="false">https://github.com/outadoc/mdi-android</string>
 
 </resources>

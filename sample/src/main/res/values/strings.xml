@@ -15,6 +15,7 @@
   -->
 
 <resources>
+
     <string name="app_name">mdi-android</string>
     <string name="grid_copiedToClipboard">Copied "%1$s" to the clipboard!</string>
     <string name="grid_title">Material Design Icons Preview</string>
@@ -23,4 +24,5 @@
     <string name="grid_search_hint">Search for an icon…</string>
     <string name="grid_aboutRepo_action">About mdi-android…</string>
     <string name="grid_aboutMdi_action">About Material Design Icons…</string>
+
 </resources>
