@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <!--
   ~ Copyright 2020 Baptiste Candellier
   ~
@@ -14,9 +15,14 @@
   ~    limitations under the License.
   -->
 
-<resources>
-    <string name="app_name">mdi-android</string>
-    <string name="grid_copiedToClipboard">Copied "%1$s" to the clipboard!</string>
-    <string name="grid_title">Material Design Icons Preview</string>
-    <string name="grid_subtitle">v%1$s</string>
-</resources>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/item_search"
+        android:icon="@drawable/ic_search"
+        android:title="Search"
+        app:showAsAction="ifRoom|collapseActionView"
+        app:actionLayout="@layout/search_view_layout"/>
+
+</menu>

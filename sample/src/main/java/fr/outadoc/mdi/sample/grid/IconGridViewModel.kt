@@ -19,18 +19,32 @@ package fr.outadoc.mdi.sample.grid
 import fr.outadoc.mdi.common.MdiFontIcon
 import fr.outadoc.mdi.common.MdiMapperLocator
 import io.uniflow.androidx.flow.AndroidDataFlow
+import io.uniflow.core.flow.actionOn
 import io.uniflow.core.flow.data.UIState
 
 class IconGridViewModel : AndroidDataFlow(defaultState = State.Loading) {
 
     sealed class State : UIState() {
         object Loading : State()
-        class Ready(val icons: List<MdiFontIcon>) : State()
+        data class Ready(
+            val allIcons: List<MdiFontIcon>,
+            val filteredIcons: List<MdiFontIcon> = allIcons
+        ) : State()
     }
 
     fun loadIcons() = action {
         MdiMapperLocator.instance?.getAllIcons()?.let { icons ->
             setState { State.Ready(icons) }
+        }
+    }
+
+    fun filterBy(query: String?) = actionOn<State.Ready> { state ->
+        setState {
+            if (query.isNullOrBlank()) {
+                state.copy(filteredIcons = state.allIcons)
+            } else {
+                state.copy(filteredIcons = state.allIcons.filter { it.name.contains(query) })
+            }
         }
     }
 }

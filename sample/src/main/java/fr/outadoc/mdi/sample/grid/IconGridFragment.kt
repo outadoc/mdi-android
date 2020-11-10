@@ -20,8 +20,10 @@ import android.content.ClipData
 import android.content.ClipboardManager
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.widget.SearchView
 import androidx.core.content.getSystemService
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -55,20 +57,35 @@ class IconGridFragment : Fragment() {
     ): View? {
         binding = FragmentGridBinding.inflate(inflater, container, false).apply {
             with(recyclerViewIconGrid) {
+                setHasFixedSize(true)
                 layoutManager = GridLayoutManager(context, ITEM_SPAN)
                 adapter = IconGridAdapter().apply {
                     clickListener = IconGridItemClickListener { icon ->
                         onItemClick(icon)
                     }
                 }
-                setHasFixedSize(true)
             }
 
             FastScrollerBuilder(recyclerViewIconGrid)
                 .useMd2Style()
                 .build()
 
-            toolbarGrid.title = getString(R.string.grid_mdiLabelWithVersion, mdiVersion)
+            val searchItem: MenuItem = toolbarGrid.menu.findItem(R.id.item_search)
+            val searchView = searchItem.actionView as SearchView
+            searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+
+                override fun onQueryTextSubmit(query: String?): Boolean {
+                    viewModel.filterBy(query)
+                    return true
+                }
+
+                override fun onQueryTextChange(newText: String?): Boolean {
+                    viewModel.filterBy(newText)
+                    return true
+                }
+            })
+
+            toolbarGrid.subtitle = getString(R.string.grid_subtitle, mdiVersion)
         }
 
         onStates(viewModel) { state ->
@@ -77,7 +94,7 @@ class IconGridFragment : Fragment() {
                     binding?.viewFlipperGrid?.displayedChild = CHILD_LOADING
                 }
                 is IconGridViewModel.State.Ready -> {
-                    binding?.adapter?.submitList(state.icons)
+                    binding?.adapter?.submitList(state.filteredIcons)
                     binding?.viewFlipperGrid?.displayedChild = CHILD_GRID
                 }
             }
