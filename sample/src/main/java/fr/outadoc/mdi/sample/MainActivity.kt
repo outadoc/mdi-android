@@ -14,18 +14,18 @@
  *    limitations under the License.
  */
 
-package fr.outadoc.mdi
+package fr.outadoc.mdi.sample
 
-import fr.outadoc.mdi.common.MdiFontIcon
-import fr.outadoc.mdi.common.MdiStringRef
+import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import fr.outadoc.mdi.AndroidMdiMapper
 import fr.outadoc.mdi.common.MdiMapperLocator
-import fr.outadoc.mdi.common.NoSuchIconException
-import java.util.Locale
 
-fun @MdiStringRef String.toIconOrNull(): MdiFontIcon? {
-    val cleanup = toLowerCase(Locale.US).replace("mdi:", "")
-    return MdiMapperLocator.instance?.getIcon(cleanup)
+class MainActivity : AppCompatActivity() {
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        MdiMapperLocator.instance = AndroidMdiMapper(this)
+        setContentView(R.layout.activity_main)
+    }
 }
-
-fun @MdiStringRef String.toIcon() =
-    toIconOrNull() ?: throw NoSuchIconException(this)

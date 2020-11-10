@@ -20,15 +20,17 @@ plugins {
 }
 
 android {
-    compileSdkVersion(30)
+    compileSdkVersion(Version.targetSdkVersion)
     buildToolsVersion("30.0.1")
 
     defaultConfig {
-        applicationId = "fr.outadoc.mdi"
-        minSdkVersion(21)
-        targetSdkVersion(30)
-        versionCode(1)
-        versionName("1.0")
+        applicationId = "fr.outadoc.mdi.sample"
+
+        minSdkVersion(Version.minSdkVersion)
+        targetSdkVersion(Version.targetSdkVersion)
+
+        versionCode(Version.getMdiVersionCode(project.rootDir.toPath()))
+        versionName(Version.getMdiVersionName(project.rootDir.toPath()))
     }
 
     buildTypes {
@@ -39,6 +41,10 @@ android {
                 "proguard-rules.pro"
             )
         }
+    }
+
+    buildFeatures {
+        viewBinding = true
     }
 
     compileOptions {
@@ -52,7 +58,16 @@ android {
 }
 
 dependencies {
+    implementation(project(":lib-mdi-android"))
+
+    implementation("io.uniflow:uniflow-androidx:0.11.6")
+
     implementation("androidx.core:core-ktx:1.3.2")
-    implementation("androidx.appcompat:appcompat:1.2.0")
-    implementation("com.google.android.material:material:1.2.1")
+    implementation("androidx.appcompat:appcompat:1.3.0-alpha02")
+    implementation("androidx.fragment:fragment-ktx:1.2.5")
+    implementation("androidx.recyclerview:recyclerview:1.1.0")
+    implementation("androidx.browser:browser:1.2.0")
+
+    implementation("com.google.android.material:material:1.3.0-alpha03")
+    implementation("me.zhanghai.android.fastscroll:library:1.1.5")
 }

@@ -14,18 +14,10 @@
  *    limitations under the License.
  */
 
-package fr.outadoc.mdi
+package fr.outadoc.mdi.sample.grid
 
 import fr.outadoc.mdi.common.MdiFontIcon
-import fr.outadoc.mdi.common.MdiStringRef
-import fr.outadoc.mdi.common.MdiMapperLocator
-import fr.outadoc.mdi.common.NoSuchIconException
-import java.util.Locale
 
-fun @MdiStringRef String.toIconOrNull(): MdiFontIcon? {
-    val cleanup = toLowerCase(Locale.US).replace("mdi:", "")
-    return MdiMapperLocator.instance?.getIcon(cleanup)
+fun interface IconGridItemClickListener {
+    fun onItemClick(icon: MdiFontIcon)
 }
-
-fun @MdiStringRef String.toIcon() =
-    toIconOrNull() ?: throw NoSuchIconException(this)

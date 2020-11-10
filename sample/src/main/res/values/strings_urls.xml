@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <!--
   ~ Copyright 2020 Baptiste Candellier
   ~
@@ -16,13 +17,7 @@
 
 <resources>
 
-    <string name="app_name">MDI Demo</string>
-    <string name="grid_copiedToClipboard">Copied "%1$s" to the clipboard!</string>
-    <string name="grid_title">Material Design Icons Preview</string>
-    <string name="grid_subtitle">v%1$s</string>
-    <string name="grid_search_action">Search</string>
-    <string name="grid_search_hint">Search for an icon…</string>
-    <string name="grid_aboutRepo_action">About mdi-android…</string>
-    <string name="grid_aboutMdi_action">About Material Design Icons…</string>
+    <string name="url_mdi_homepage" translatable="false">https://materialdesignicons.com</string>
+    <string name="url_repo" translatable="false">https://github.com/outadoc/mdi-android</string>
 
 </resources>

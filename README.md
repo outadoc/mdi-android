@@ -78,6 +78,13 @@ textView_fontIcon_example.setText(icon1.unicodePoint)
 textView_fontIcon_example.setIcon(icon1)
 ```
 
+## Sample application
+You will find a sample application [in this repo](sample/) that uses the library to display all available icons.
+
+|   |   |
+|---|---|
+| ![Screenshot 1](assets/sample-screenshot0.png) | ![Screenshot 2](assets/sample-screenshot1.png) |
+
 ## License
 The icons provided by this library are made and maintained by the [Pictogrammers](http://pictogrammers.com/)
 icon group. See more at @templarian/MaterialDesign.

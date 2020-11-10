@@ -18,7 +18,9 @@ package fr.outadoc.mdi
 
 import android.content.Context
 import android.util.AttributeSet
-import androidx.appcompat.widget.*
+import androidx.appcompat.widget.AppCompatTextView
+import androidx.core.content.res.ResourcesCompat
+
 
 public class MdiFontIconView : AppCompatTextView {
 
@@ -41,7 +43,7 @@ public class MdiFontIconView : AppCompatTextView {
     }
 
     init {
-        setTextAppearance(R.style.TextAppearance_MaterialDesignIcons)
+        typeface = ResourcesCompat.getFont(context, R.font.materialdesignicons_webfont)
     }
 
     private fun initWithAttributes(context: Context, attrs: AttributeSet?) {

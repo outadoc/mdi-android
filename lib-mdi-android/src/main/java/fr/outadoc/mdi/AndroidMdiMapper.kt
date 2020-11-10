@@ -20,9 +20,6 @@ import android.content.Context
 import fr.outadoc.mdi.common.MdiFontIcon
 import fr.outadoc.mdi.common.MdiStringRef
 import fr.outadoc.mdi.common.MdiMapper
-import java.io.BufferedReader
-import java.io.InputStreamReader
-import java.nio.charset.StandardCharsets
 import java.util.TreeMap
 
 /**
@@ -35,28 +32,28 @@ public class AndroidMdiMapper(context: Context) : MdiMapper {
         private const val SEPARATOR = ' '
     }
 
-    private val iconMap: Map<String, String>
+    private val iconMap: Map<String, MdiFontIcon>
 
     init {
-        context.assets.open(FILENAME).use { file ->
-            iconMap = BufferedReader(
-                InputStreamReader(file, StandardCharsets.UTF_8)
-            ).use { reader ->
-                loadMap(reader)
+        iconMap = context.assets.open(FILENAME)
+            .reader().buffered()
+            .useLines { lines ->
+                loadMap(lines)
             }
-        }
     }
 
     override fun getIcon(@MdiStringRef iconName: String): MdiFontIcon? {
-        return iconMap[iconName]?.let { MdiFontIcon(name = iconName, unicodePoint = it) }
+        return iconMap[iconName]
     }
 
-    private fun loadMap(reader: BufferedReader): Map<String, String> {
-        val map = TreeMap<String, String>()
-        reader.forEachLine { line ->
+    override fun getAllIcons(): List<MdiFontIcon> {
+        return iconMap.values.toList()
+    }
+
+    private fun loadMap(lines: Sequence<String>): Map<String, MdiFontIcon> {
+        return lines.map { line ->
             val split = line.split(SEPARATOR, limit = 2)
-            map[split[0]] = split[1]
-        }
-        return map
+            split[0] to MdiFontIcon(name = split[0], unicodePoint = split[1])
+        }.toMap(TreeMap())
     }
 }

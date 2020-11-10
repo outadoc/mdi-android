@@ -14,18 +14,16 @@
  *    limitations under the License.
  */
 
-package fr.outadoc.mdi
+package fr.outadoc.mdi.sample.grid
 
+import androidx.recyclerview.widget.DiffUtil
 import fr.outadoc.mdi.common.MdiFontIcon
-import fr.outadoc.mdi.common.MdiStringRef
-import fr.outadoc.mdi.common.MdiMapperLocator
-import fr.outadoc.mdi.common.NoSuchIconException
-import java.util.Locale
 
-fun @MdiStringRef String.toIconOrNull(): MdiFontIcon? {
-    val cleanup = toLowerCase(Locale.US).replace("mdi:", "")
-    return MdiMapperLocator.instance?.getIcon(cleanup)
+object IconItemCallback : DiffUtil.ItemCallback<MdiFontIcon>() {
+
+    override fun areItemsTheSame(oldItem: MdiFontIcon, newItem: MdiFontIcon): Boolean =
+        oldItem.name == newItem.name
+
+    override fun areContentsTheSame(oldItem: MdiFontIcon, newItem: MdiFontIcon): Boolean =
+        oldItem == newItem
 }
-
-fun @MdiStringRef String.toIcon() =
-    toIconOrNull() ?: throw NoSuchIconException(this)
