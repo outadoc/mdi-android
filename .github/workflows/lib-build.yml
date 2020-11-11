@@ -1,4 +1,4 @@
-name: Build
+name: Build library
 
 on: [pull_request]
 

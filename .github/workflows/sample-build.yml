@@ -1,4 +1,4 @@
-name: Sample app build
+name: Build sample app
 
 on: [pull_request]
 
