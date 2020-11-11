@@ -20,3 +20,15 @@ jobs:
       with:
         name: sample-release
         path: sample/build/outputs/universal_apk/release/sample-release-universal-unsigned.apk
+
+  # Remove this
+  create_release:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - uses: actions/download-artifact@v2
+        id: download
+        with:
+          name: sample-release
+      - name: Display structure of downloaded files
+        run: ls -R
