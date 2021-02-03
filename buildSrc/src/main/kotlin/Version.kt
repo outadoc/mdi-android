@@ -18,7 +18,7 @@ import java.nio.file.Path
 
 object Version {
 
-    private const val mdiLibRevision = 'i'
+    private const val mdiLibRevision = 'a'
 
     const val commonLibVersion = "1.0.1"
 
