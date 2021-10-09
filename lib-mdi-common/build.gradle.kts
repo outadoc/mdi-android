@@ -35,7 +35,7 @@ afterEvaluate {
             create<MavenPublication>("commonLibMaven") {
                 groupId = Publishing.groupId
                 artifactId = "mdi-common"
-                version = Version.commonLibVersion
+                version = Version.getMdiVersionName(project.rootDir.toPath())
 
                 from(components["java"])
             }

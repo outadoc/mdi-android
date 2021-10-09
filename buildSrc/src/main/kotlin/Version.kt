@@ -18,9 +18,7 @@ import java.nio.file.Path
 
 object Version {
 
-    private const val mdiLibRevision = 'a'
-
-    const val commonLibVersion = "1.0.1"
+    private const val mdiLibRevision = 'b'
 
     const val minSdkVersion = 21
     const val targetSdkVersion = 30
