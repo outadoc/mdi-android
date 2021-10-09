@@ -21,7 +21,6 @@ plugins {
 
 android {
     compileSdkVersion(Version.targetSdkVersion)
-    buildToolsVersion("30.0.1")
 
     defaultConfig {
         applicationId = "fr.outadoc.mdi.sample"
@@ -62,12 +61,12 @@ dependencies {
 
     implementation("io.uniflow:uniflow-androidx:0.11.6")
 
-    implementation("androidx.core:core-ktx:1.3.2")
+    implementation("androidx.core:core-ktx:1.6.0")
     implementation("androidx.appcompat:appcompat:1.3.1")
-    implementation("androidx.fragment:fragment-ktx:1.2.5")
-    implementation("androidx.recyclerview:recyclerview:1.1.0")
-    implementation("androidx.browser:browser:1.2.0")
+    implementation("androidx.fragment:fragment-ktx:1.3.6")
+    implementation("androidx.recyclerview:recyclerview:1.2.1")
+    implementation("androidx.browser:browser:1.3.0")
 
-    implementation("com.google.android.material:material:1.3.0-alpha03")
+    implementation("com.google.android.material:material:1.5.0-alpha04")
     implementation("me.zhanghai.android.fastscroll:library:1.1.7")
 }
