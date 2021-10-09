@@ -36,8 +36,8 @@ import fr.outadoc.mdi.common.MdiFontIcon
 import fr.outadoc.mdi.sample.BuildConfig
 import fr.outadoc.mdi.sample.R
 import fr.outadoc.mdi.sample.databinding.FragmentGridBinding
-import io.uniflow.androidx.flow.onEvents
-import io.uniflow.androidx.flow.onStates
+import io.uniflow.android.livedata.onEvents
+import io.uniflow.android.livedata.onStates
 import me.zhanghai.android.fastscroll.FastScrollerBuilder
 
 
