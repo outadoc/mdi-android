@@ -20,15 +20,14 @@ plugins {
     kotlin("android")
 }
 
+version = Version.getMdiVersionName(project.rootDir.toPath())
+
 android {
     compileSdkVersion(Version.targetSdkVersion)
 
     defaultConfig {
         minSdkVersion(Version.minSdkVersion)
         targetSdkVersion(Version.targetSdkVersion)
-
-        versionCode(Version.getMdiVersionCode(project.rootDir.toPath()))
-        versionName(Version.getMdiVersionName(project.rootDir.toPath()))
     }
 
     compileOptions {
