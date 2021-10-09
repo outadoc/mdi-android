@@ -28,8 +28,8 @@ android {
         minSdkVersion(Version.minSdkVersion)
         targetSdkVersion(Version.targetSdkVersion)
 
-        versionCode(Version.getMdiVersionCode(project.rootDir.toPath()))
-        versionName(Version.getMdiVersionName(project.rootDir.toPath()))
+        versionCode = Version.getMdiVersionCode(project.rootDir.toPath())
+        versionName = Version.getMdiVersionName(project.rootDir.toPath())
     }
 
     buildTypes {
