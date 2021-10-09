@@ -9,10 +9,11 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: set up JDK 1.8
+    - name: Set up JDK
       uses: actions/setup-java@v2
       with:
-        java-version: 1.8
+        java-version: '11'
+        distribution: 'temurin'
     - name: Build with Gradle
       run: ./gradlew sample:packageReleaseUniversalApk
     - name: Upload a Build Artifact

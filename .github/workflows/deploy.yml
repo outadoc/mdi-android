@@ -11,10 +11,11 @@ jobs:
     continue-on-error: true
     steps:
       - uses: actions/checkout@v2
-      - name: Set up JDK 1.8
+      - name: Set up JDK
         uses: actions/setup-java@v2
         with:
-          java-version: 1.8
+          java-version: '11'
+          distribution: 'temurin'
       - name: Publish package
         run: ./gradlew assembleRelease publish
         env:
@@ -24,10 +25,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Set up JDK 1.8
+      - name: Set up JDK
         uses: actions/setup-java@v2
         with:
-          java-version: 1.8
+          java-version: '11'
+          distribution: 'temurin'
       - name: Build sample app
         run: ./gradlew sample:packageReleaseUniversalApk
       - name: Upload a Build Artifact
