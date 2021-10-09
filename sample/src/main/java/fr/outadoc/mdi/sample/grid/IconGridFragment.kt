@@ -121,7 +121,7 @@ class IconGridFragment : Fragment() {
         }
 
         onEvents(viewModel) { event ->
-            when (event.take()) {
+            when (event) {
                 is IconGridViewModel.Event.OpenMdiHomePage -> openUrl(getString(R.string.url_mdi_homepage).toUri())
                 is IconGridViewModel.Event.OpenRepoPage -> openUrl(getString(R.string.url_repo).toUri())
             }
