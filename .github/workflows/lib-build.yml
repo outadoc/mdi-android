@@ -12,6 +12,6 @@ jobs:
         with:
           java-version: 1.8
       - name: Setup Node.js environment
-        uses: actions/setup-node@v2.1.5
+        uses: actions/setup-node@v2.4.1
       - name: Build with Gradle
         run: ./gradlew assembleRelease
