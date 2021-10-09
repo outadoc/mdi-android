@@ -69,5 +69,5 @@ dependencies {
     implementation("androidx.browser:browser:1.2.0")
 
     implementation("com.google.android.material:material:1.3.0-alpha03")
-    implementation("me.zhanghai.android.fastscroll:library:1.1.5")
+    implementation("me.zhanghai.android.fastscroll:library:1.1.7")
 }
