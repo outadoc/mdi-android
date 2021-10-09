@@ -28,8 +28,8 @@ android {
         minSdkVersion(Version.minSdkVersion)
         targetSdkVersion(Version.targetSdkVersion)
 
-        versionCode(Version.getMdiVersionCode(project.rootDir.toPath()))
-        versionName(Version.getMdiVersionName(project.rootDir.toPath()))
+        versionCode = Version.getMdiVersionCode(project.rootDir.toPath())
+        versionName = Version.getMdiVersionName(project.rootDir.toPath())
     }
 
     buildTypes {
@@ -59,7 +59,7 @@ android {
 dependencies {
     implementation(project(":lib-mdi-android"))
 
-    implementation("io.uniflow:uniflow-androidx:0.11.6")
+    implementation("org.uniflow-kt:uniflow-android:1.0.10")
 
     implementation("androidx.core:core-ktx:1.6.0")
     implementation("androidx.appcompat:appcompat:1.3.1")

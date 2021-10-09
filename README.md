@@ -12,7 +12,7 @@ This library is hosted on Github Packages. In your projec's root `build.gradle.k
 allprojects {
     repositories {
         google()
-        jcenter()
+        mavenCentral()
 
         // [...]
 

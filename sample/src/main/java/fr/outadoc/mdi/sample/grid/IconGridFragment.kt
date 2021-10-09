@@ -36,8 +36,8 @@ import fr.outadoc.mdi.common.MdiFontIcon
 import fr.outadoc.mdi.sample.BuildConfig
 import fr.outadoc.mdi.sample.R
 import fr.outadoc.mdi.sample.databinding.FragmentGridBinding
-import io.uniflow.androidx.flow.onEvents
-import io.uniflow.androidx.flow.onStates
+import io.uniflow.android.livedata.onEvents
+import io.uniflow.android.livedata.onStates
 import me.zhanghai.android.fastscroll.FastScrollerBuilder
 
 
@@ -121,7 +121,7 @@ class IconGridFragment : Fragment() {
         }
 
         onEvents(viewModel) { event ->
-            when (event.take()) {
+            when (event) {
                 is IconGridViewModel.Event.OpenMdiHomePage -> openUrl(getString(R.string.url_mdi_homepage).toUri())
                 is IconGridViewModel.Event.OpenRepoPage -> openUrl(getString(R.string.url_repo).toUri())
             }

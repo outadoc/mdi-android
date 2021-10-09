@@ -18,7 +18,7 @@ package fr.outadoc.mdi.sample.grid
 
 import fr.outadoc.mdi.common.MdiFontIcon
 import fr.outadoc.mdi.common.MdiMapperLocator
-import io.uniflow.androidx.flow.AndroidDataFlow
+import io.uniflow.android.AndroidDataFlow
 import io.uniflow.core.flow.actionOn
 import io.uniflow.core.flow.data.UIEvent
 import io.uniflow.core.flow.data.UIState
