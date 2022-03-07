@@ -13,6 +13,6 @@ jobs:
           java-version: '11'
           distribution: 'temurin'
       - name: Setup Node.js environment
-        uses: actions/setup-node@v2.4.1
+        uses: actions/setup-node@v2.5.1
       - name: Build with Gradle
         run: ./gradlew assembleRelease
