@@ -46,7 +46,7 @@ kotlin {
 
 dependencies {
     api(project(":lib-mdi-common"))
-    implementation("androidx.appcompat:appcompat:1.3.1")
+    implementation("androidx.appcompat:appcompat:1.5.1")
 }
 
 afterEvaluate {
