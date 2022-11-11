@@ -59,7 +59,7 @@ android {
 dependencies {
     implementation(project(":lib-mdi-android"))
 
-    implementation("org.uniflow-kt:uniflow-android:1.0.10")
+    implementation("org.uniflow-kt:uniflow-android:1.1.2")
 
     implementation("androidx.core:core-ktx:1.6.0")
     implementation("androidx.appcompat:appcompat:1.3.1")
